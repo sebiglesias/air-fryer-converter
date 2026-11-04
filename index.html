@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <!-- Google tag (gtag.js) GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2BNDBQP0W7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2BNDBQP0W7');
+  </script>
+
+  <!-- Google AdSense -->
+  <meta name="google-adsense-account" content="ca-pub-3381238987477190">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3381238987477190" crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Air Fryer Calculator & Oven Converter (°F / °C) | Cooking Time & Temp</title>
+  <meta name="description" content="Instantly convert conventional oven recipes to air fryer temperature and cooking time. Includes preset charts for fries, wings, steak, salmon, pizza reheat, and built-in shake timer.">
+  <meta name="keywords" content="air fryer calculator, oven to air fryer converter, air fryer conversion chart, convert oven temperature to air fryer, air fryer cooking times, how to convert oven recipe to air fryer">
+  <meta name="author" content="Sebastián Iglesias">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#ea580c">
+  <link rel="icon" type="image/svg+xml" href="icon.svg">
+  <link rel="apple-touch-icon" href="icon.svg">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://sebiglesias.com.ar/air-fryer-converter/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sebiglesias.com.ar/air-fryer-converter/">
+  <meta property="og:title" content="Air Fryer Calculator & Oven Recipe Converter">
+  <meta property="og:description" content="Convert any oven recipe to air fryer temp and cook time in seconds. Built-in flip timer and cooking presets.">
+  <meta property="og:image" content="https://sebiglesias.com.ar/air-fryer-converter/icon.svg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Air Fryer Calculator & Oven Converter">
+  <meta name="twitter:description" content="Convert any oven recipe to air fryer temp and cook time in seconds.">
+  <meta name="twitter:image" content="https://sebiglesias.com.ar/air-fryer-converter/icon.svg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Air Fryer Calculator & Oven Converter",
+    "url": "https://sebiglesias.com.ar/air-fryer-converter/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "description": "Convert conventional oven cooking times and temperatures to air fryer settings with live timer and preset charts.",
+    "author": {
+      "@type": "Person",
+      "name": "Sebastián Iglesias"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do you convert an oven recipe to an air fryer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The golden rule of air frying is to lower the conventional oven temperature by 25°F (approx. 20°C) and reduce the cooking time by 20% to 25%. Always check your food and flip or shake halfway through cooking."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need to preheat an air fryer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For small basket air fryers, 2 to 3 minutes of preheating at your target temperature ensures maximum crispiness for proteins, fries, and pizza reheat."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you put foil or parchment paper in an air fryer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, but only if weighted down with food. Never put loose foil or parchment paper into an air fryer during preheating as the high-velocity fan can suck it into the heating element and cause a fire hazard."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #0b0e14;
+      --card-bg: #131824;
+      --card-subtle: #192132;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-focus: rgba(249, 115, 22, 0.4);
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --orange: #f97316;
+      --orange-hover: #ea580c;
+      --orange-glow: rgba(249, 115, 22, 0.2);
+      --green: #10b981;
+      --blue: #38bdf8;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      padding: 1.5rem 1rem 4rem;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .badge-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      background: rgba(249, 115, 22, 0.12);
+      color: var(--orange);
+      border: 1px solid rgba(249, 115, 22, 0.3);
+      margin-bottom: 0.75rem;
+    }
+
+    h1 {
+      font-size: 2.1rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #ffffff 40%, #fdba74 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    /* Calculator Main Card */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+      margin-bottom: 1.75rem;
+    }
+
+    .controls-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .toggle-group {
+      display: inline-flex;
+      background: var(--card-subtle);
+      padding: 4px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+    }
+
+    .toggle-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .toggle-btn.active {
+      background: var(--orange);
+      color: #ffffff;
+      box-shadow: 0 2px 8px var(--orange-glow);
+    }
+
+    .input-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.75rem;
+    }
+
+    @media (max-width: 600px) {
+      .input-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .field-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .field-val-badge {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--orange);
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .number-input {
+      width: 100%;
+      background: var(--card-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1rem;
+      color: #ffffff;
+      font-size: 1.2rem;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      transition: border-color 0.2s;
+    }
+
+    .number-input:focus {
+      outline: none;
+      border-color: var(--orange);
+      box-shadow: 0 0 0 3px var(--orange-glow);
+    }
+
+    .input-unit {
+      position: absolute;
+      right: 1rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 700;
+      pointer-events: none;
+    }
+
+    input[type=range] {
+      width: 100%;
+      accent-color: var(--orange);
+      margin-top: 0.5rem;
+      cursor: pointer;
+    }
+
+    /* Result Banner */
+    .result-box {
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.12), rgba(234, 88, 12, 0.04));
+      border: 1px solid rgba(249, 115, 22, 0.35);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (max-width: 540px) {
+      .result-box {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+    }
+
+    .result-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .result-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .result-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.1;
+    }
+
+    .result-sub {
+      font-size: 0.8rem;
+      color: var(--orange);
+      margin-top: 0.35rem;
+      font-weight: 600;
+    }
+
+    .shake-banner {
+      grid-column: 1 / -1;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: var(--radius-sm);
+      padding: 0.6rem 1rem;
+      font-size: 0.85rem;
+      color: #6ee7b7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-weight: 600;
+    }
+
+    /* Timer Section */
+    .timer-card {
+      background: var(--card-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      margin-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      border: 1px solid var(--border);
+    }
+
+    .timer-display {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+
+    .timer-digits {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #ffffff;
+      min-width: 110px;
+    }
+
+    .timer-status {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .timer-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .btn {
+      padding: 0.6rem 1.1rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+
+    .btn-orange {
+      background: var(--orange);
+      color: #ffffff;
+    }
+
+    .btn-orange:hover {
+      background: var(--orange-hover);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+
+    .btn-outline:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+    }
+
+    /* Food Presets */
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .preset-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 0.85rem;
+      margin-bottom: 2rem;
+    }
+
+    .preset-chip {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 0.9rem;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .preset-chip:hover {
+      border-color: var(--orange);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px -4px rgba(0, 0, 0, 0.4);
+    }
+
+    .preset-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .preset-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .preset-stats {
+      font-size: 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--orange);
+      font-weight: 600;
+    }
+
+    .preset-hint {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      line-height: 1.3;
+    }
+
+    /* Conversion Table */
+    .table-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin-bottom: 2rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.875rem;
+    }
+
+    th {
+      padding: 0.75rem 1rem;
+      color: var(--text-muted);
+      font-weight: 700;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--border);
+    }
+
+    td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      font-family: 'JetBrains Mono', monospace;
+      color: #ffffff;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .highlight-cell {
+      color: var(--orange);
+      font-weight: 700;
+    }
+
+    /* Accessories & Tips */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 650px) {
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .info-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+    }
+
+    .info-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .info-card ul {
+      list-style-type: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .info-card li {
+      position: relative;
+      padding-left: 1.25rem;
+    }
+
+    .info-card li::before {
+      content: "•";
+      color: var(--orange);
+      position: absolute;
+      left: 0.25rem;
+      font-weight: bold;
+    }
+
+    /* FAQ */
+    .faq-item {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .faq-q {
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 0.4rem;
+      color: #ffffff;
+    }
+
+    .faq-a {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* AdSense Unit */
+    .ad-container {
+      min-height: 100px;
+      margin: 2rem 0;
+      text-align: center;
+    }
+
+    .ad-disclaimer {
+      display: block;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      opacity: 0.6;
+      margin-bottom: 0.25rem;
+    }
+
+    /* Interlinking Footer */
+    .family-nav {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .family-nav h4 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .family-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .family-btn {
+      padding: 0.45rem 0.85rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 9999px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .family-btn:hover {
+      border-color: var(--orange);
+      color: #ffffff;
+      background: var(--card-subtle);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    footer a {
+      color: var(--orange);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="badge-top">🔥 High Precision Calculator</div>
+      <h1>Air Fryer Calculator & Oven Converter</h1>
+      <p class="subtitle">Convert any conventional or convection oven recipe into precise air fryer cook time and temperature with a single tap.</p>
+    </header>
+
+    <!-- Calculator Card -->
+    <div class="card">
+      <div class="controls-row">
+        <div class="toggle-group">
+          <button class="toggle-btn active" id="unit-f" onclick="setUnit('F')">Fahrenheit (°F)</button>
+          <button class="toggle-btn" id="unit-c" onclick="setUnit('C')">Celsius (°C)</button>
+        </div>
+
+        <div class="toggle-group">
+          <button class="toggle-btn active" id="oven-conv" onclick="setOvenType('conventional')">Conventional Oven</button>
+          <button class="toggle-btn" id="oven-fan" onclick="setOvenType('convection')">Convection / Fan</button>
+        </div>
+      </div>
+
+      <div class="input-grid">
+        <!-- Temp Input -->
+        <div class="field-group">
+          <div class="field-label">
+            <span>Oven Temperature</span>
+            <span class="field-val-badge" id="temp-display">400°F</span>
+          </div>
+          <div class="input-wrapper">
+            <input type="number" id="oven-temp" class="number-input" value="400" min="150" max="500" step="5" oninput="onTempInputChange()">
+            <span class="input-unit" id="temp-unit-label">°F</span>
+          </div>
+          <input type="range" id="temp-range" min="200" max="475" step="5" value="400" oninput="onTempSliderChange()">
+        </div>
+
+        <!-- Time Input -->
+        <div class="field-group">
+          <div class="field-label">
+            <span>Oven Cooking Time</span>
+            <span class="field-val-badge" id="time-display">25 min</span>
+          </div>
+          <div class="input-wrapper">
+            <input type="number" id="oven-time" class="number-input" value="25" min="1" max="180" step="1" oninput="onTimeInputChange()">
+            <span class="input-unit">mins</span>
+          </div>
+          <input type="range" id="time-range" min="3" max="90" step="1" value="25" oninput="onTimeSliderChange()">
+        </div>
+      </div>
+
+      <!-- Results Display -->
+      <div class="result-box">
+        <div class="result-item">
+          <span class="result-title">Air Fryer Temperature</span>
+          <span class="result-value" id="res-temp">375°F</span>
+          <span class="result-sub" id="res-temp-diff">-25°F lower</span>
+        </div>
+
+        <div class="result-item">
+          <span class="result-title">Air Fryer Time</span>
+          <span class="result-value" id="res-time">20 min</span>
+          <span class="result-sub" id="res-time-diff">-20% faster</span>
+        </div>
+
+        <div class="shake-banner" id="res-shake">
+          🔔 <strong>Halfway Shake:</strong> Flip or shake your basket at <strong>10 minutes</strong>
+        </div>
+      </div>
+
+      <!-- Interactive Timer -->
+      <div class="timer-card">
+        <div class="timer-display">
+          <span class="timer-digits" id="timer-val">20:00</span>
+          <span class="timer-status" id="timer-status">Ready</span>
+        </div>
+        <div class="timer-actions">
+          <button class="btn btn-orange" id="timer-start-btn" onclick="toggleTimer()">Start Timer</button>
+          <button class="btn btn-outline" onclick="resetTimer()">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- AdSense Slot -->
+    <div class="ad-container">
+      <span class="ad-disclaimer">Advertisement</span>
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-3381238987477190"
+           data-ad-slot="9270280155"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+
+    <!-- Quick Presets -->
+    <h2 class="section-title">🍟 Popular Air Fryer Presets</h2>
+    <div class="preset-grid">
+      <div class="preset-chip" onclick="applyPreset(400, 20, 'F')">
+        <div class="preset-icon">🍟</div>
+        <div class="preset-name">Frozen French Fries</div>
+        <div class="preset-stats">400°F (200°C) • 16-18 min</div>
+        <div class="preset-hint">Shake basket every 5 mins for extra crunch.</div>
+      </div>
+
+      <div class="preset-chip" onclick="applyPreset(400, 28, 'F')">
+        <div class="preset-icon">🍗</div>
+        <div class="preset-name">Crispy Chicken Wings</div>
+        <div class="preset-stats">380°F (190°C) • 22 min</div>
+        <div class="preset-hint">Pat dry with paper towel before seasoning.</div>
+      </div>
+
+      <div class="preset-chip" onclick="applyPreset(375, 18, 'F')">
+        <div class="preset-icon">🥩</div>
+        <div class="preset-name">Chicken Breast</div>
+        <div class="preset-stats">360°F (180°C) • 14 min</div>
+        <div class="preset-hint">Rest 5 mins before slicing. Internal 165°F.</div>
+      </div>
+
+      <div class="preset-chip" onclick="applyPreset(425, 12, 'F')">
+        <div class="preset-icon">🥩</div>
+        <div class="preset-name">Ribeye / NY Strip Steak</div>
+        <div class="preset-stats">400°F (200°C) • 9-11 min</div>
+        <div class="preset-hint">Preheat well. Flip at 5 min for medium-rare.</div>
+      </div>
+
+      <div class="preset-chip" onclick="applyPreset(400, 12, 'F')">
+        <div class="preset-icon">🐟</div>
+        <div class="preset-name">Salmon Fillet</div>
+        <div class="preset-stats">380°F (190°C) • 9 min</div>
+        <div class="preset-hint">Skin side down. Juicy center without drying.</div>
+      </div>
+
+      <div class="preset-chip" onclick="applyPreset(375, 6, 'F')">
+        <div class="preset-icon">🍕</div>
+        <div class="preset-name">Leftover Pizza Reheat</div>
+        <div class="preset-stats">350°F (175°C) • 4-5 min</div>
+        <div class="preset-hint">Restores crust crispiness better than microwave!</div>
+      </div>
+
+      <div class="preset-chip" onclick="applyPreset(400, 16, 'F')">
+        <div class="preset-icon">🥦</div>
+        <div class="preset-name">Roasted Broccoli / Veggies</div>
+        <div class="preset-stats">375°F (190°C) • 12 min</div>
+        <div class="preset-hint">Light olive oil toss. Charred crispy edges.</div>
+      </div>
+
+      <div class="preset-chip" onclick="applyPreset(400, 10, 'F')">
+        <div class="preset-icon">🥓</div>
+        <div class="preset-name">Crispy Bacon</div>
+        <div class="preset-stats">375°F (190°C) • 8 min</div>
+        <div class="preset-hint">Single layer. Drain grease halfway if necessary.</div>
+      </div>
+    </div>
+
+    <!-- Conversion Cheat Sheet Table -->
+    <h2 class="section-title">📊 Oven to Air Fryer Cheat Sheet</h2>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Conventional Oven</th>
+            <th>Air Fryer Temperature</th>
+            <th>Standard Time Conversion</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="cheat-table-body">
+          <!-- Dynamically populated based on unit -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Essential Tips & Accessories -->
+    <div class="info-grid">
+      <div class="info-card">
+        <h3>💡 4 Golden Rules of Air Frying</h3>
+        <ul>
+          <li><strong>The -25°F & -20% Formula:</strong> Air fryers circulate convection heat in a compact chamber, cooking much faster than standard ovens.</li>
+          <li><strong>Never Overcrowd:</strong> Hot air must circulate freely around food. Cook in batches if needed for maximum crispiness.</li>
+          <li><strong>Preheat for 2-3 Minutes:</strong> Getting the basket hot beforehand gives meats and fries immediate searing and sizzle.</li>
+          <li><strong>Use Oil Mister, Not Aerosol:</strong> Aerosol propellants (like PAM) damage non-stick coatings. Use an oil pump sprayer with avocado or olive oil.</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h3>🍳 Recommended Air Fryer Gear</h3>
+        <ul>
+          <li><strong>Silicone Air Fryer Liners:</strong> Non-stick, dishwasher safe, and keeps the basket spotless without blocking airflow.</li>
+          <li><strong>Digital Instant-Read Meat Thermometer:</strong> Essential for checking chicken (165°F), pork (145°F), and steak (135°F) safely.</li>
+          <li><strong>Glass Oil Sprayer Bottle:</strong> Delivers an ultra-fine, propellant-free mist of high-smoke-point oil for golden browning.</li>
+          <li><strong>Silicone-tipped Tongs:</strong> Flips hot food easily without scratching non-stick coatings.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <h2 class="section-title">❓ Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">Why does an air fryer cook faster than an oven?</div>
+      <div class="faq-a">Air fryers are essentially high-powered, concentrated convection ovens. Their heating element is situated directly above a high-velocity fan that blasts dry hot air directly onto the food in a small chamber, accelerating heat transfer by 20% to 30%.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can you put aluminum foil or parchment paper in an air fryer?</div>
+      <div class="faq-a">Yes, but always make sure there is food weighing it down. If loose paper or foil flies up into the heating element, it can ignite. Use perforated air fryer parchment circles for best airflow.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How do I reheat fries without them getting soggy?</div>
+      <div class="faq-a">Set the air fryer to 380°F (190°C) for 3 to 4 minutes and shake halfway through. The circulating dry heat evaporates surface moisture, restoring the original crunch without making them greasy.</div>
+    </div>
+
+    <!-- Family Interlinking Navigation -->
+    <div class="family-nav">
+      <h4>🎉 Everyday & Party Calculators</h4>
+      <div class="family-links">
+        <a href="https://sebiglesias.com.ar/bbq-calculator/" class="family-btn">🥩 BBQ Calculator</a>
+        <a href="https://sebiglesias.com.ar/pizza-calculator/" class="family-btn">🍕 Pizza Calculator</a>
+        <a href="https://sebiglesias.com.ar/coffee-ratio/" class="family-btn">☕ Coffee Ratio</a>
+        <a href="https://sebiglesias.com.ar/barbell-calculator/" class="family-btn">🏋️ Barbell Plates</a>
+        <a href="https://sebiglesias.com.ar/dog-age-calculator/" class="family-btn">🐶 Dog Age</a>
+        <a href="https://sebiglesias.com.ar/wedding-drink-calculator/" class="family-btn">🥂 Wedding Drinks</a>
+      </div>
+    </div>
+
+    <footer>
+      <p>Created with precision by <a href="https://sebiglesias.com.ar">Sebastián Iglesias</a> • 100% Free & Open Web Tools</p>
+    </footer>
+  </div>
+
+  <script>
+    // State
+    let currentUnit = 'F'; // 'F' or 'C'
+    let currentOvenType = 'conventional'; // 'conventional' or 'convection'
+
+    // Timer State
+    let timerTotalSeconds = 0;
+    let timerRemainingSeconds = 0;
+    let timerInterval = null;
+    let isTimerRunning = false;
+
+    // Elements
+    const ovenTempInput = document.getElementById('oven-temp');
+    const tempRange = document.getElementById('temp-range');
+    const tempDisplay = document.getElementById('temp-display');
+    const tempUnitLabel = document.getElementById('temp-unit-label');
+
+    const ovenTimeInput = document.getElementById('oven-time');
+    const timeRange = document.getElementById('time-range');
+    const timeDisplay = document.getElementById('time-display');
+
+    const resTemp = document.getElementById('res-temp');
+    const resTempDiff = document.getElementById('res-temp-diff');
+    const resTime = document.getElementById('res-time');
+    const resTimeDiff = document.getElementById('res-time-diff');
+    const resShake = document.getElementById('res-shake');
+
+    const timerVal = document.getElementById('timer-val');
+    const timerStatus = document.getElementById('timer-status');
+    const timerStartBtn = document.getElementById('timer-start-btn');
+
+    // Conversions
+    function calculate() {
+      const ovenT = parseFloat(ovenTempInput.value) || (currentUnit === 'F' ? 400 : 200);
+      const ovenM = parseFloat(ovenTimeInput.value) || 20;
+
+      let targetTemp = 0;
+      let targetTime = 0;
+      let tempDiffText = '';
+      let timeDiffText = '';
+
+      if (currentUnit === 'F') {
+        if (currentOvenType === 'conventional') {
+          targetTemp = ovenT - 25;
+          targetTime = Math.max(1, Math.round(ovenM * 0.8));
+          tempDiffText = '-25°F lower';
+          timeDiffText = '-20% faster';
+        } else {
+          // Convection oven to air fryer (already has fan, small difference)
+          targetTemp = ovenT - 10;
+          targetTime = Math.max(1, Math.round(ovenM * 0.9));
+          tempDiffText = '-10°F lower';
+          timeDiffText = '-10% faster';
+        }
+        resTemp.textContent = `${Math.round(targetTemp)}°F`;
+      } else {
+        // Celsius
+        if (currentOvenType === 'conventional') {
+          targetTemp = ovenT - 20;
+          targetTime = Math.max(1, Math.round(ovenM * 0.8));
+          tempDiffText = '-20°C lower';
+          timeDiffText = '-20% faster';
+        } else {
+          targetTemp = ovenT - 10;
+          targetTime = Math.max(1, Math.round(ovenM * 0.9));
+          tempDiffText = '-10°C lower';
+          timeDiffText = '-10% faster';
+        }
+        resTemp.textContent = `${Math.round(targetTemp)}°C`;
+      }
+
+      resTempDiff.textContent = tempDiffText;
+      resTime.textContent = `${targetTime} min`;
+      resTimeDiff.textContent = timeDiffText;
+
+      const halfTime = Math.max(1, Math.round(targetTime / 2));
+      resShake.innerHTML = `🔔 <strong>Halfway Shake:</strong> Flip or shake your basket at <strong>${halfTime} minute${halfTime === 1 ? '' : 's'}</strong>`;
+
+      // Update timer reset target if not actively counting
+      if (!isTimerRunning) {
+        timerTotalSeconds = targetTime * 60;
+        timerRemainingSeconds = timerTotalSeconds;
+        updateTimerDisplay();
+      }
+    }
+
+    function setUnit(unit) {
+      if (currentUnit === unit) return;
+      currentUnit = unit;
+      document.getElementById('unit-f').classList.toggle('active', unit === 'F');
+      document.getElementById('unit-c').classList.toggle('active', unit === 'C');
+      tempUnitLabel.textContent = `°${unit}`;
+
+      let currentVal = parseFloat(ovenTempInput.value);
+      if (unit === 'C') {
+        // Convert F to C: (F - 32) * 5/9
+        currentVal = Math.round(((currentVal - 32) * 5) / 9 / 5) * 5;
+        ovenTempInput.min = 80;
+        ovenTempInput.max = 250;
+        tempRange.min = 80;
+        tempRange.max = 240;
+      } else {
+        // Convert C to F: (C * 9/5) + 32
+        currentVal = Math.round(((currentVal * 9) / 5 + 32) / 5) * 5;
+        ovenTempInput.min = 180;
+        ovenTempInput.max = 500;
+        tempRange.min = 180;
+        tempRange.max = 475;
+      }
+      ovenTempInput.value = currentVal;
+      tempRange.value = currentVal;
+      tempDisplay.textContent = `${currentVal}°${unit}`;
+
+      renderCheatSheet();
+      calculate();
+    }
+
+    function setOvenType(type) {
+      currentOvenType = type;
+      document.getElementById('oven-conv').classList.toggle('active', type === 'conventional');
+      document.getElementById('oven-fan').classList.toggle('active', type === 'convection');
+      calculate();
+    }
+
+    function onTempSliderChange() {
+      const val = tempRange.value;
+      ovenTempInput.value = val;
+      tempDisplay.textContent = `${val}°${currentUnit}`;
+      calculate();
+    }
+
+    function onTempInputChange() {
+      const val = ovenTempInput.value;
+      tempRange.value = val;
+      tempDisplay.textContent = `${val}°${currentUnit}`;
+      calculate();
+    }
+
+    function onTimeSliderChange() {
+      const val = timeRange.value;
+      ovenTimeInput.value = val;
+      timeDisplay.textContent = `${val} min`;
+      calculate();
+    }
+
+    function onTimeInputChange() {
+      const val = ovenTimeInput.value;
+      timeRange.value = val;
+      timeDisplay.textContent = `${val} min`;
+      calculate();
+    }
+
+    function applyPreset(temp, time, unit) {
+      if (currentUnit !== unit) {
+        setUnit(unit);
+      }
+      ovenTempInput.value = temp;
+      tempRange.value = temp;
+      tempDisplay.textContent = `${temp}°${unit}`;
+
+      ovenTimeInput.value = time;
+      timeRange.value = time;
+      timeDisplay.textContent = `${time} min`;
+
+      calculate();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Cheat Sheet Data
+    const cheatDataF = [
+      { oven: '300°F', fryer: '275°F', time: '20 min → 16 min' },
+      { oven: '325°F', fryer: '300°F', time: '25 min → 20 min' },
+      { oven: '350°F', fryer: '325°F', time: '30 min → 24 min' },
+      { oven: '375°F', fryer: '350°F', time: '25 min → 20 min' },
+      { oven: '400°F', fryer: '375°F', time: '20 min → 16 min' },
+      { oven: '425°F', fryer: '400°F', time: '18 min → 14 min' },
+      { oven: '450°F', fryer: '425°F', time: '15 min → 12 min' },
+    ];
+
+    const cheatDataC = [
+      { oven: '150°C', fryer: '130°C', time: '20 min → 16 min' },
+      { oven: '160°C', fryer: '140°C', time: '25 min → 20 min' },
+      { oven: '180°C', fryer: '160°C', time: '30 min → 24 min' },
+      { oven: '190°C', fryer: '170°C', time: '25 min → 20 min' },
+      { oven: '200°C', fryer: '180°C', time: '20 min → 16 min' },
+      { oven: '220°C', fryer: '200°C', time: '18 min → 14 min' },
+      { oven: '230°C', fryer: '210°C', time: '15 min → 12 min' },
+    ];
+
+    function renderCheatSheet() {
+      const tbody = document.getElementById('cheat-table-body');
+      tbody.innerHTML = '';
+      const list = currentUnit === 'F' ? cheatDataF : cheatDataC;
+      list.forEach(row => {
+        const tr = document.createElement('tr');
+        const numTemp = parseInt(row.oven);
+        tr.innerHTML = `
+          <td>${row.oven}</td>
+          <td class="highlight-cell">${row.fryer}</td>
+          <td>${row.time}</td>
+          <td><button class="btn btn-outline" style="padding: 3px 8px; font-size: 0.72rem;" onclick="applyPreset(${numTemp}, 20, '${currentUnit}')">Use</button></td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // Timer Logic
+    function updateTimerDisplay() {
+      const m = Math.floor(timerRemainingSeconds / 60).toString().padStart(2, '0');
+      const s = (timerRemainingSeconds % 60).toString().padStart(2, '0');
+      timerVal.textContent = `${m}:${s}`;
+    }
+
+    function toggleTimer() {
+      if (isTimerRunning) {
+        clearInterval(timerInterval);
+        isTimerRunning = false;
+        timerStartBtn.textContent = 'Resume';
+        timerStatus.textContent = 'Paused';
+      } else {
+        if (timerRemainingSeconds <= 0) {
+          timerRemainingSeconds = timerTotalSeconds;
+        }
+        isTimerRunning = true;
+        timerStartBtn.textContent = 'Pause';
+        timerStatus.textContent = 'Cooking...';
+
+        timerInterval = setInterval(() => {
+          if (timerRemainingSeconds > 0) {
+            timerRemainingSeconds--;
+            updateTimerDisplay();
+
+            // Check shake time alert
+            const halfTimeSec = Math.floor(timerTotalSeconds / 2);
+            if (timerRemainingSeconds === halfTimeSec) {
+              timerStatus.textContent = '🔔 SHAKE BASKET NOW!';
+              if (navigator.vibrate) navigator.vibrate([200, 100, 200]);
+            }
+          } else {
+            clearInterval(timerInterval);
+            isTimerRunning = false;
+            timerStartBtn.textContent = 'Start Timer';
+            timerStatus.textContent = '✅ Finished! Done cooking.';
+            if (navigator.vibrate) navigator.vibrate([500, 200, 500, 200, 500]);
+          }
+        }, 1000);
+      }
+    }
+
+    function resetTimer() {
+      clearInterval(timerInterval);
+      isTimerRunning = false;
+      timerStartBtn.textContent = 'Start Timer';
+      timerStatus.textContent = 'Ready';
+      timerRemainingSeconds = timerTotalSeconds;
+      updateTimerDisplay();
+    }
+
+    // PWA Service Worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(() => {});
+      });
+    }
+
+    // Initial setup
+    renderCheatSheet();
+    calculate();
+  </script>
+</body>
+</html>

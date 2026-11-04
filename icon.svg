@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="fryerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f97316"/>
+      <stop offset="50%" stop-color="#ea580c"/>
+      <stop offset="100%" stop-color="#c2410c"/>
+    </linearGradient>
+    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fdba74"/>
+      <stop offset="100%" stop-color="#ea580c"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="#0c0e14"/>
+  <!-- Basket / Appliance Outer -->
+  <rect x="96" y="112" width="320" height="300" rx="48" fill="#1e2430" stroke="#334155" stroke-width="8"/>
+  <!-- Top Digital Display Panel -->
+  <rect x="136" y="148" width="240" height="72" rx="20" fill="#0f172a" stroke="#f97316" stroke-width="3"/>
+  <text x="256" y="196" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="34" fill="#fb923c" text-anchor="middle" letter-spacing="2">380°F • 15M</text>
+  <!-- Handle -->
+  <rect x="228" y="270" width="56" height="110" rx="28" fill="url(#fryerGrad)" filter="drop-shadow(0 6px 12px rgba(234, 88, 12, 0.4))"/>
+  <rect x="242" y="284" width="28" height="82" rx="14" fill="#0f172a" opacity="0.3"/>
+  <!-- Heat Vortex Waves -->
+  <path d="M 160 256 C 180 236 195 240 215 256" stroke="#fbbf24" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.8"/>
+  <path d="M 297 256 C 317 236 332 240 352 256" stroke="#fbbf24" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.8"/>
+</svg>

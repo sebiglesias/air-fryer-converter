@@ -1,0 +1,16 @@
+{
+  "name": "Air Fryer Calculator & Oven Converter",
+  "short_name": "Air Fryer Conv",
+  "description": "Convert conventional oven recipes to air fryer temperature and cooking time with one tap. Includes preset cooking charts and shake timers.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0c0e14",
+  "theme_color": "#ea580c",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
