@@ -30,6 +30,17 @@
 
   <!-- Canonical -->
   <link rel="canonical" href="https://sebiglesias.com.ar/air-fryer-converter/">
+  <link rel="alternate" hreflang="en" href="https://sebiglesias.com.ar/air-fryer-converter/">
+  <link rel="alternate" hreflang="es" href="https://sebiglesias.com.ar/air-fryer-converter/?lang=es">
+  <link rel="alternate" hreflang="de" href="https://sebiglesias.com.ar/air-fryer-converter/?lang=de">
+  <link rel="alternate" hreflang="fr" href="https://sebiglesias.com.ar/air-fryer-converter/?lang=fr">
+  <link rel="alternate" hreflang="it" href="https://sebiglesias.com.ar/air-fryer-converter/?lang=it">
+  <link rel="alternate" hreflang="pt" href="https://sebiglesias.com.ar/air-fryer-converter/?lang=pt">
+  <link rel="alternate" hreflang="nl" href="https://sebiglesias.com.ar/air-fryer-converter/?lang=nl">
+  <link rel="alternate" hreflang="sv" href="https://sebiglesias.com.ar/air-fryer-converter/?lang=sv">
+  <link rel="alternate" hreflang="da" href="https://sebiglesias.com.ar/air-fryer-converter/?lang=da">
+  <link rel="alternate" hreflang="pl" href="https://sebiglesias.com.ar/air-fryer-converter/?lang=pl">
+  <link rel="alternate" hreflang="x-default" href="https://sebiglesias.com.ar/air-fryer-converter/">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
@@ -691,6 +702,18 @@
 <body>
   <div class="container">
     <header>
+<div style='display:flex;justify-content:flex-end;margin-bottom:.5rem'><select id="lang-select" aria-label="Language" style="background:#24221C;border:1px solid rgba(242,239,230,.18);color:#F2EFE6;font-family:'JetBrains Mono',monospace;font-size:.72rem;padding:3px 6px;border-radius:3px;cursor:pointer;margin-left:auto">
+  <option value="en">🇺🇸 EN</option>
+  <option value="es">🇪🇸 ES</option>
+  <option value="de">🇩🇪 DE</option>
+  <option value="fr">🇫🇷 FR</option>
+  <option value="it">🇮🇹 IT</option>
+  <option value="pt">🇵🇹 PT</option>
+  <option value="nl">🇳🇱 NL</option>
+  <option value="sv">🇸🇪 SV</option>
+  <option value="da">🇩🇰 DA</option>
+  <option value="pl">🇵🇱 PL</option>
+</select></div>
       <div class="badge-top">🔥 High Precision Calculator</div>
       <h1>Air Fryer Calculator & Oven Converter</h1>
       <p class="subtitle">Convert any conventional or convection oven recipe into precise air fryer cook time and temperature with a single tap.</p>
@@ -1201,5 +1224,41 @@
     renderCheatSheet();
     calculate();
   </script>
+
+<script>
+/* I18N_AUTO_ENGINE */
+(function(){
+  const DICT = {"en": {"title": "Oven to Air Fryer Converter<span class='accent'>.</span>", "sub": "Instant temperature (-25°F / -15°C) & cooking time reduction calculator"}, "es": {"title": "Conversor Horno a Freidora de Aire<span class='accent'>.</span>", "sub": "Ajuste exacto de temperatura y tiempo de cocción para Air Fryer"}, "de": {"title": "Backofen zu Heißluftfritteuse Rechner<span class='accent'>.</span>", "sub": "Temperatur und Backzeit für den Airfryer sofort umrechnen"}, "fr": {"title": "Convertisseur Four vers Air Fryer<span class='accent'>.</span>", "sub": "Conversion instantanée température et temps de cuisson friteuse sans huile"}, "it": {"title": "Convertitore Forno a Friggitrice ad Aria<span class='accent'>.</span>", "sub": "Calcolo immediato temperatura e minuti per Air Fryer"}, "pt": {"title": "Conversor Forno para Air Fryer<span class='accent'>.</span>", "sub": "Converta temperatura e tempo de cozimento para fritadeira sem óleo"}, "nl": {"title": "Oven naar Airfryer Omrekentool<span class='accent'>.</span>", "sub": "Direct temperatuur en baktijd omrekenen naar de Airfryer"}, "sv": {"title": "Ugn till Airfryer Omvandlare<span class='accent'>.</span>", "sub": "Räkna om gradtal och tillagningstid från ugn till varmluftsfritös"}, "da": {"title": "Ovn til Airfryer Omregner<span class='accent'>.</span>", "sub": "Konverter temperatur og stegetid fra almindelig ovn til Airfryer"}, "pl": {"title": "Przelicznik Piekarnik na Air Fryer<span class='accent'>.</span>", "sub": "Szybka konwersja temperatury i czasu pieczenia dla frytkownicy beztłuszczowej"}};
+  const h1El = document.querySelector('h1');
+  const subEl = document.querySelector('.sub') || document.querySelector('header p');
+  const selEl = document.getElementById('lang-select');
+  function applyLang(lang) {
+    const entry = DICT[lang] || DICT.en;
+    document.documentElement.lang = lang;
+    if (h1El && entry.title) h1El.innerHTML = entry.title;
+    if (subEl && entry.sub) subEl.textContent = entry.sub;
+    if (lang !== 'en' && entry.sub) {
+      document.title = (h1El ? h1El.textContent : '') + ' — ' + entry.sub;
+    }
+  }
+  const params = new URLSearchParams(window.location.search);
+  const init = params.get('lang') || localStorage.getItem('air-fryer-converter-lang') || 'en';
+  const valid = DICT[init] ? init : 'en';
+  if (selEl) {
+    selEl.value = valid;
+    selEl.addEventListener('change', function(e) {
+      const nl = e.target.value;
+      localStorage.setItem('air-fryer-converter-lang', nl);
+      const u = new URL(window.location.href);
+      if (nl === 'en') u.searchParams.delete('lang');
+      else u.searchParams.set('lang', nl);
+      window.history.replaceState({}, '', u);
+      applyLang(nl);
+    });
+  }
+  applyLang(valid);
+})();
+</script>
+
 </body>
 </html>
